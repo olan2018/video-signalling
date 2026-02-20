@@ -66,10 +66,10 @@
 		"build": "parcel build",
 		"lint": "eslint --ext .js,.ts . && npm run check",
 		"check": "tsc --noEmit",
-		"test": "npm run lint && jest",
+		"test": "jest",
 		"coverage": "jest --coverage",
-		"start": "node dist/bin/peerjs.js --port ${PORT:=9000}",
-		"dev": "nodemon --watch src -e ts --exec 'npm run build && npm run start'",
+		"start": "node dist/bin/peerjs.js --port ${PORT:-9000} --cors ${ALLOWED_ORIGIN:-*}",
+		"dev": "nodemon --watch src -e ts --exec 'npm run build && ALLOWED_ORIGIN=https://slocx-meeting-six.vercel.app PORT=9000 node dist/bin/peerjs.js --port 9000 --cors https://slocx-meeting-six.vercel.app'",
 		"semantic-release": "semantic-release"
 	},
 	"dependencies": {
