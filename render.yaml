@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: slocx-peer-js
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 9000
+      - key: ALLOWED_ORIGIN
+        value: https://slocx-meeting-six.vercel.app
